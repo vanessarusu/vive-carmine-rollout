@@ -1,0 +1,51 @@
+@import './components/variables';
+@import './components/typography';
+@import './components/utils';
+@import './components/splash-page';
+@import './components/header';
+@import './components/lightbox';
+@import './components/form';
+@import './components/cookie-banner';
+@import './components/suites-grid.scss';
+@import './components/custom-slider.scss';
+@import './components/homepage-image-grid';
+@import './components/footer';
+
+
+body {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.key-building-features {
+    .fl-row-content-wrap {
+        background-size: auto 84vh;
+        background-position: left bottom;
+    }
+    
+}
+
+
+
+body:not(.fl-builder-edit) {
+    .position-relative {
+        position: relative;
+    }
+
+    .photo-label {
+        position: absolute;
+        bottom: 4rem;
+        display: inline;
+        width: auto !important;
+        padding: 0.4rem 2rem;
+        background: rgba(white, 0.8);
+
+        &.right {
+            right: 0;
+        }
+
+        &.left {
+            left: 0;
+        }
+    }
+}
