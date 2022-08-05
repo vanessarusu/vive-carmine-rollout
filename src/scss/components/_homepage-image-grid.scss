@@ -1,47 +1,50 @@
-.page-id-2 {
-    .esg-bc.eec {
-        @media (max-width: 800px) {
-            position: relative;
-            top: 0;
+body:not(.fl-builder-edit) {
+    .position-relative {
+        position: relative;
+    }
+
+    .photo-label {
+        position: absolute;
+        bottom: 6rem;
+        display: inline;
+        width: auto !important;
+        padding: 20px 50px;
+        padding: 1.1vw 2.8vw;
+        background: rgba(white, 0.8);
+        h4 {
+            line-height: 0;
+        }
+
+        &.right {
+            right: 0;
+            border-top-left-radius: calc(var(--border-radius) * 1.5);
+            border-top-left-radius: 2vw;
+        }
+
+        &.left {
             left: 0;
-    
-            .esg-bottom {
-                position: absolute;
-                top: 3rem;
-                left: 0;
-                padding: 1.6rem;
-            }
+        }
+        &.low {
+            bottom: 3rem;
+        }
+        > * {
+            margin: 0;
         }
     }
-    
-    body:not(.fl-builder-edit) {
-        .position-relative {
-            position: relative;
-        }
-    
-        .photo-label {
-            position: absolute;
-            bottom: 4rem;
-            display: inline;
-            width: auto !important;
-            padding: 0.4rem 2rem;
-            
-            @media (max-width: 800px) {
-                .fl-module-content {
-                    margin: 0.6rem;
-                }
-            }
-            background: rgba(white, 0.8);
-    
-            &.right {
-                right: 0;
-            }
-    
-            &.left {
-                left: 0;
-            }
-    
-            
-        }
+
+    .eg-my-custom-grid-element-2,
+    .eg-my-custom-grid-left-label-element-2 {
+        padding: 1.1vw 2.8vw;
+        border-top-left-radius: 2vw;
+        font-size: clamp(14px, 1.5vw, 25px);
+        line-height: 1;
+        font-weight: bold;
+        font-family: "Open Sans", sans-serif;
+        margin-bottom: 3rem;
+    }
+
+    .eg-my-custom-grid-left-label-element-2 {
+        border-top-right-radius: 2vw;
+        border-top-left-radius: 0;
     }
 }

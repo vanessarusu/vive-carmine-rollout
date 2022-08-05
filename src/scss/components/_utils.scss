@@ -1,21 +1,6 @@
 .modal-open {
-    // position: fixed;
     overflow: hidden;
     transition: all 0.2s ease;
-
-    // &:after {
-    //     content: '';
-    //     background: rgba($black, 0.8);
-    //     display: block;
-    //     position: fixed;
-    //     left: 0;
-    //     right: 0;
-    //     top: 0;
-    //     bottom: 0;
-    //     width: 100%;
-    //     height: 100%;
-    //     z-index: 0;
-    // }
 }
 
 .position-relative {
@@ -32,9 +17,36 @@
     .fl-module-heading,
     .two-column-width-image,
     .fl-module-button {
-        max-width: 650px;
+        // max-width: 750px;
+        max-width: clamp(450px, 35vw, 750px);
         width: 100%;
         margin: 0 auto;
+
+        @media (max-width: $small-desktop) {
+            max-width: 80%;
+        }
+
+        @media (max-width: $tablet) {
+            max-width: 90%;
+        }
+    }
+
+    &.left-aligned {
+        .fl-module-rich-text,
+        .fl-module-heading,
+        .two-column-width-image,
+        .fl-module-button {
+            margin: 0 auto 0 8%;
+
+            @media (max-width: $small-desktop) {
+                max-width: 80%;
+            }
+
+            @media (max-width: $tablet) {
+                max-width: 90%;
+                margin: 0 auto;
+            }
+        }
     }
 }
 
@@ -45,4 +57,8 @@ body {
 
 footer.fl-page-footer-wrap {
     display: none !important;
+}
+
+.fl-button {
+    transition: all 0.2s ease-in-out;
 }

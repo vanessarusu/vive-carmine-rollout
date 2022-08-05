@@ -24,15 +24,7 @@ function load_custom_templates() {
 
     // load splash page and lightbox if the builder is not open
     if ( ! isset( $_GET['fl_builder'] ) ) {
-        FLBuilder::render_query( array(
-            'post_type' => 'fl-builder-template',
-            'p'         => 98,
-        ) );
 		
-        FLBuilder::render_query( array(
-            'post_type' => 'fl-builder-template',
-            'p'         => 139
-        ) );
     }  
 }
 
@@ -57,7 +49,7 @@ add_filter( 'fl_builder_global_posts', 'my_global_builder_posts' );
 
 add_action( 'customize_register', 'vive_market_customize_register' );
 
-add_action( 'fl_before_header', 'load_custom_templates' );
+// add_action( 'fl_before_header', 'load_custom_templates' );
 add_action('wp_enqueue_scripts', '_vive_market_flats_assets', 1000 );
 
 
@@ -73,4 +65,9 @@ function defer_parsing_of_js( $url ) {
     if ( strpos( $url, 'jquery.js' ) ) return $url;
     return str_replace( ' src', ' defer src', $url );
 }
-add_filter( 'script_loader_tag', 'defer_parsing_of_js', 10 );
+// add_filter( 'script_loader_tag', 'defer_parsing_of_js', 10 );
+
+add_action( 'init', 'wpse325327_add_excerpts_to_pages' );
+function wpse325327_add_excerpts_to_pages() {
+    add_post_type_support( 'floorplans', 'excerpt' );
+}

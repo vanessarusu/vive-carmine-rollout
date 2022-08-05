@@ -1,74 +1,79 @@
-h1, h1 span,
-h2, h2 span,
-h3, h3 span,
-h4, h4 span,
-h5, h5 span,
-h6, h6 span {
-    font-weight: 900;
-    letter-spacing: 0.8px;
-    font-family: $sans-serif;
+p {
+    font-size: clamp(14px, 1.3vw, 24px);
 }
 
-section, aside, div, p, span {
-    font-weight: 300;
-    letter-spacing: 0.3px;
-}
-
-::selection {
-    background: $green;
-    color: white;
-}
-
-.custom-button-outline {
-    .fl-button-wrap {
-        position: relative;
-
-        a.fl-button {
-            background: url(https://market-flats.com/wp21/wp-content/uploads/2020/11/custom-button-background.svg) center center no-repeat;
-            background-size: contain;
-            max-width: 480px;
-            margin: 0 auto;
-            height: 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s ease-in-out;
-
-            span {
-                font-weight: 600;
-                letter-spacing: 3px;
-            }
-
-            &:hover {
-                opacity: 0.8;
-            }
-
-            @media (max-width: $small-desktop) {
-                max-width: 420px;
-            }
-            @media (max-width: $tablet) {
-                max-width: 320px;
-            }
-
-            
-        }
-    }
-    &.black-button .fl-button-wrap a.fl-button {
-        background: url(https://market-flats.com/wp21/wp-content/uploads/2021/03/custom-button-background-black.svg) center center no-repeat;
-    }
-    &.flip {
-        //flip background image
-        transform: scaleX(-1);
-
-        .fl-button-text {
-            // flip text (again)
-            transform: scaleX(-1);
-        }
+h1, h1 span {
+    font-size: clamp(36px, 6.5vw, 130px);
+    line-height: 0.9;
+    @media (max-width: $tablet) {
+        line-height: 1.1;
     }
 }
 
-#esg-grid-1-1 .esg-bc.eec {
-    @media (max-width: 800px) {
-        // display: none;
+.h1-alt p, .h1-alt span {
+    font-size: clamp(20px, 2.9vw, 58px);
+    line-height: 0.9;
+    @media (max-width: $tablet) {
+        line-height: 1.1;
     }
+}
+
+.h1-inner-page p, .h1-inner-page span, .h1-inner-page h1 {
+    font-size: clamp(30px, 4.2vw, 80px);
+    line-height: 0.9;
+
+    @media (max-width: $tablet) {
+        line-height: 1.1;
+    }
+}
+
+
+h2, h2 span {
+    font-size: clamp(24px, 2.4vw, 49px);
+    line-height: 1.1;
+}
+
+.h2-alt h2, .h2-alt h2 span {
+    font-size: clamp(20px, 2.2vw, 41px);
+}
+
+h3, h3 span {
+    font-size: clamp(16px, 1.2vw, 22px);
+    font-weight: 600;
+}
+
+h4, h4 span {
+    font-size: clamp(14px, 1.5vw, 25px);
+    line-height: 1;
+    font-weight: bold;
+    font-family: "Open Sans", sans-serif;
+}
+
+.rounded-corners .fl-button-wrap a {
+    border-radius: 25px 0 25px 0;
+    padding: 24px 32px 20px;
+    letter-spacing: 1px;
+    &:hover {
+        border-radius: 25px 0 25px 0;
+    }
+}
+
+h2.fl-heading, 
+h2 {
+    strong,
+    span strong {
+        color: var(--teal);
+        // display: block;
+        font-weight: 100 !important;
+    }
+}
+
+.hero-address p,
+.hero-address p span {
+    font-size: clamp(24px, 2.4vw, 28px);
+}
+
+.inner-page-subheading p,
+.inner-page-subheading p span {
+    font-size: clamp(16px, 1.4vw, 24px);
 }

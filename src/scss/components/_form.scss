@@ -31,11 +31,11 @@ form#wpforms-form-62 {
     }
 
     .form-submit-field {
-        background: $green;
+        background: $maroon;
         border: none;
         width: 100%;
         max-width: 240px;
-        color: $black;
+        color: $white;
         text-transform: uppercase;
         font-weight: 600;
         letter-spacing: 2px;
@@ -45,7 +45,7 @@ form#wpforms-form-62 {
         transition: all 0.2s ease-in-out;
 
         &:hover {
-            background: darken($green, 5%);
+            background: darken($maroon, 5%);
         }
     }
 
@@ -137,13 +137,13 @@ form#wpforms-form-62 {
                 display: none;
 
                 &:checked + label:before {
-                    background-color: $green;
+                    background-color: $maroon;
                 }
             }
 
             .wpforms-field-label-inline {
                 font-weight: 600;
-                color: $green;
+                color: $maroon;
                 padding-left: 30px;
                 padding-right: 10px;
                 position: relative;
@@ -219,7 +219,7 @@ form#wpforms-form-62 {
                 position: absolute;
                 right: 0;
                 top: 0;
-                background: $green;
+                background: $teal;
                 display: inline-block;
                 cursor: pointer;
 
@@ -278,7 +278,7 @@ form#wpforms-form-62 {
                 transition: all 0.15s ease-in-out;
         
                 &:hover {
-                    background: $green;
+                    // background: $green;
                 }
             }
         }

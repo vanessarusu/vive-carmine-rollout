@@ -1,11 +1,15 @@
-import splashPage from './splash-page';
 import formStyling from './form-styling';
+import customLightbox from "./custom-lightbox";
+
 import suitesGridLightbox from './suites-grid-lightbox';
+import customSlider from './custom-slider';
 
 (function() {
 
     var pageIds = {
         suites: "342",
+        home: '2',
+        location: '302'
     }
 
     if(document.querySelector(`body.page-id-${pageIds.suites}`)) {
@@ -13,11 +17,21 @@ import suitesGridLightbox from './suites-grid-lightbox';
         sgl.init();
     }
 
-    const sp = splashPage(); 
-    const fs = formStyling();
+    if(document.querySelector(`body.page-id-${pageIds.home}`)) {
+        const cs = customSlider();
+        cs.init(2);
+    }
 
-    sp.init();    
+    if(document.querySelector(`body.page-id-${pageIds.location}`)) {
+        const cs = customSlider();
+        cs.init(4);
+    }
+
+    const fs = formStyling();
+    const cl = customLightbox();
+
     fs.init();
+    cl.init();
 
     document.querySelectorAll('.register-link').forEach(function(el) {
         el.addEventListener('click', function(e) {
@@ -58,6 +72,7 @@ import suitesGridLightbox from './suites-grid-lightbox';
         document.querySelector('body').classList.remove('modal-open');
         document.querySelector('#lightboxForm').classList.remove('lightbox-open');
     }
+    console.log('Website development by vanessarusu.com')
 }
 
 ());
