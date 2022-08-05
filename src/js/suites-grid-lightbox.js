@@ -3,37 +3,57 @@ const suitesGridLightbox = (function () {
     var gridItems = document.querySelectorAll("#esg-grid-3-1 li");
     var lightboxActive = false;
     var allLightboxPosts = [];
+    var allFloorplans = getAllPosts();
 
-    function configureClickEvent(item,index) {
+    function configureClickEvent(item, index) {
         var postID = item.getAttribute("id").split('-');
         postID = postID[postID.length-1];
-        var postContent = getPost(postID);        
 
-        item.addEventListener("click", function(){
-            createLightbox(allLightboxPosts[postID]);
+        item.addEventListener("click", function() {
+            allFloorplans.forEach(item => {
+                if (item.id == postID) {
+                    createLightbox(item);
+                }
+                else {
+                }
+            });        
         });
     };
 
-    function getPost(id) {
-        var post = new wp.api.models.Post( { id: id } );
-        post.fetch().done(function(res) {
-            allLightboxPosts[id] = res.content;
+
+    function getAllPosts() {
+        var post = new wp.api.models.Floorplans();
+
+        return post.fetch({ data: { per_page: 40 } }).done((data) => {
+                return allFloorplans = data;
         });
     }
 
-    function createLightbox(content) {
-        if(content !== undefined && !lightboxActive) {
+    function createLightbox(post) {
             
             var body = document.querySelector("body");
-            var content = content;
-            var markup = '<div id="essentialGridCustomLightbox" class="essential-grid-custom-modal"><div class="content-container"><div class="dismiss"><button><span></span><span></span></button></div>'+content.rendered+'</div></div>';
+            var content = post.id;
+            var lightBoxImage = post.acf.floorplan_lightbox_image;
+            var pdfDownload = post.acf.floorplan_pdf_download;
+            
+            var markup = `<div id="essentialGridCustomLightbox" class="essential-grid-custom-modal">
+                            <div class="content-container">
+                                <div class="dismiss">
+                                    <button><span></span><span></span></button>
+                                </div>
+                                <div class="image-container">
+                                    <img src="${lightBoxImage}" />
+                                </div>
+                                <div class="button-container">
+                                    <a class="fl-button rounded-corners" href="${pdfDownload}" target="blank">Download Suite PDF</a>
+                                </div>
+                            </div>
+                        </div>`;
             body.insertAdjacentHTML('afterend', markup);
             body.classList.add('modal-open');
             document.querySelector(".dismiss button").addEventListener('click', dismissLightbox);
-            document.querySelector(".essential-grid-custom-modal").addEventListener("click", dismissLightbox);
             window.addEventListener("keyup", keyboardDismissLightbox)
             return lightboxActive = true;
-        }
     }
 
     function dismissLightbox() {
@@ -56,7 +76,7 @@ const suitesGridLightbox = (function () {
     function init() {
         wp.api.loadPromise.done( function(data) {
             gridItems.forEach(configureClickEvent);
-    
+
         } );
     }
 

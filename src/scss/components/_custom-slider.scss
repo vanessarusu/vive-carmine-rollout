@@ -1,55 +1,73 @@
+
+$slider-breakpoint: 900px;
 .custom-slider {
     .custom-slide-heading {
         p {
-            border-bottom: 2px solid $green !important;
+            border-bottom: 2px solid rgba($white, 0.6) !important;
             margin-bottom: 50px !important;
             padding-bottom: 16px !important;
+
+            @media (max-width: $slider-breakpoint) {
+                margin-bottom: 30px !important;
+            }
+
+            max-width: 400px;
         }
     }
 
     .nextend-arrow {
-        border: 2px solid $green;
+        border: 2px solid $white;
         padding: 1rem !important;
         border-radius: 50%;
         overflow: visible !important;
-        @media (max-width: 768px) {
-
-        }
+        border-color: $white !important;
     }
 
     .nextend-arrow.nextend-arrow-previous {
-        @media (max-width: 900px) {
-            left: 20px !important;
+        @media (max-width: $slider-breakpoint) {
+            left: -40px !important;
         }
     }
 
     .nextend-arrow.nextend-arrow-next {
-        left: 225px !important;
-        @media (max-width: 900px) {
-            left: 155px !important;;
+        left: 45px !important;
+
+        @media (max-width: $slider-breakpoint) {
+            left: 10px !important;
         }
     }
 
     .slider-pagination {
         position: absolute;
-        left: 0;
+        left: 135px;
         z-index: 100;
+        bottom: 70px;
+
+        @media (max-width: $slider-breakpoint) {
+            left: 76px;
+        }
 
         p, span {
-            font-size: 4rem;
+            font-size: 3.4rem;
             font-weight: bold;
-            color: $green;
-            margin-left: 3.8rem;
-            margin-top: -1.5rem;
+            color: $white;
 
-            @media (max-width: 900px) {
-                font-size: 3rem;
-                margin-top: -1rem;
-                margin-left: 3rem;
+            @media (max-width: $slider-breakpoint) {
+                font-size: 2.4rem;
+                margin-left: 1rem;
             }
+
             &.bullet {
-                margin: 0 0.4rem;
+                margin: 0 0.8rem;
+
+                @media (max-width: $slider-breakpoint) {
+                    margin: 0 0.2rem 0 1rem;
+                }
             }
         }
     }
+}
+
+div#n2-ss-2 .n2-style-7a4f18e396a68d592cc1cf4f9021d7b9-heading {
+    border-color: white !important;
 }
