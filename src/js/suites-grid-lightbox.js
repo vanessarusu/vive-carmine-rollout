@@ -8,16 +8,20 @@ const suitesGridLightbox = (function () {
     function configureClickEvent(item, index) {
         var postID = item.getAttribute("id").split('-');
         postID = postID[postID.length-1];
+        setTimeout(function(){
+            item.addEventListener("click", function() {
+                allFloorplans.forEach(item => {
+                    if (item.id == postID) {
+                        createLightbox(item);
+                    }
+                    else {
+                    }
+                });        
+            });
 
-        item.addEventListener("click", function() {
-            allFloorplans.forEach(item => {
-                if (item.id == postID) {
-                    createLightbox(item);
-                }
-                else {
-                }
-            });        
-        });
+        }, 2000);
+
+        
     };
 
 
@@ -25,6 +29,8 @@ const suitesGridLightbox = (function () {
         var post = new wp.api.models.Floorplans();
 
         return post.fetch({ data: { per_page: 40 } }).done((data) => {
+            console.log(data);
+            debugger;
                 return allFloorplans = data;
         });
     }

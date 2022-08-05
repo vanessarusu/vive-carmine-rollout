@@ -47,7 +47,7 @@ function my_global_builder_posts( $post_ids ) {
 
 add_filter( 'fl_builder_global_posts', 'my_global_builder_posts' );
 
-add_action( 'customize_register', 'vive_market_customize_register' );
+// add_action( 'customize_register', 'vive_market_customize_register' );
 
 // add_action( 'fl_before_header', 'load_custom_templates' );
 add_action('wp_enqueue_scripts', '_vive_market_flats_assets', 1000 );
