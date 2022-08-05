@@ -10,6 +10,8 @@ const suitesGridLightbox = (function () {
         postID = postID[postID.length-1];
         setTimeout(function(){
             item.addEventListener("click", function() {
+                console.log(allFloorplans);
+                debugger;
                 allFloorplans.forEach(item => {
                     if (item.id == postID) {
                         createLightbox(item);
