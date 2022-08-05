@@ -12,13 +12,23 @@ const suitesGridLightbox = (function () {
             item.addEventListener("click", function() {
                 console.log(allFloorplans);
                 debugger;
-                allFloorplans.forEach(item => {
-                    if (item.id == postID) {
-                        createLightbox(item);
+                for (var i=0; i < allFloorplans.length; i++) {
+                    console.log(allFloorplans[i].id);
+                    console.log(Number(postID));
+                    if(allFloorplans[i].id === Number(postID)) {
+                        createLightbox(allFloorplans[i]);
+                        console.log('match');
+                        return;
+
                     }
-                    else {
-                    }
-                });        
+                }
+                // allFloorplans.forEach(item => {
+                //     if (item.id == postID) {
+                //         createLightbox(item);
+                //     }
+                //     else {
+                //     }
+                // });        
             });
 
         }, 2000);
@@ -31,8 +41,7 @@ const suitesGridLightbox = (function () {
         var post = new wp.api.models.Floorplans();
 
         return post.fetch({ data: { per_page: 40 } }).done((data) => {
-            console.log(data);
-            debugger;
+            console.log(data); 
                 return allFloorplans = data;
         });
     }
@@ -41,8 +50,8 @@ const suitesGridLightbox = (function () {
             
             var body = document.querySelector("body");
             var content = post.id;
-            var lightBoxImage = post.acf.floorplan_lightbox_image;
-            var pdfDownload = post.acf.floorplan_pdf_download;
+            var lightBoxImage = post.acf.floorplan_lightbox_image || null;
+            var pdfDownload = post.acf.floorplan_pdf_download || null;
             
             var markup = `<div id="essentialGridCustomLightbox" class="essential-grid-custom-modal">
                             <div class="content-container">
