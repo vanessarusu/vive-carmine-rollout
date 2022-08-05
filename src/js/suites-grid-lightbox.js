@@ -19,36 +19,19 @@ const suitesGridLightbox = (function () {
         
         var classes = Array.from(item.classList);
         var classID = Array.from(classes).filter(word => word.includes("eg-post-id-"));
-        console.log(classID);
         var postID = classID[0].split('-');
         postID = postID[postID.length-1];
-        console.log(postID);
         setTimeout(function(){
             item.addEventListener("click", function() {
-                console.log(allFloorplans);
-                debugger;
                 for (var i=0; i < allFloorplans.length; i++) {
-                    console.log(allFloorplans[i].id);
-                    console.log(Number(postID));
                     if(allFloorplans[i].id === Number(postID)) {
                         createLightbox(allFloorplans[i]);
-                        console.log('match');
                         return;
 
                     }
-                }
-                // allFloorplans.forEach(item => {
-                //     if (item.id == postID) {
-                //         createLightbox(item);
-                //     }
-                //     else {
-                //     }
-                // });        
+                }      
             });
-
-        }, 2000);
-
-        
+        }, 500);
     };
 
 
@@ -59,20 +42,9 @@ const suitesGridLightbox = (function () {
             var post = new wp.api.models.Floorplans();
 
             return post.fetch({ data: { per_page: 40 } }).done((data) => {
-                console.log(data); 
                     return allFloorplans = data;
             });
-
-
         } );
-
-
-        // var post = new wp.api.models.Floorplans();
-
-        // return post.fetch({ data: { per_page: 40 } }).done((data) => {
-        //     console.log(data); 
-        //         return allFloorplans = data;
-        // });
     }
 
     function createLightbox(post) {
