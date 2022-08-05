@@ -1,9 +1,18 @@
 const suitesGridLightbox = (function () {
 
+    
+
+
     var gridItems = document.querySelectorAll("#esg-grid-3-1 li");
     var lightboxActive = false;
     var allLightboxPosts = [];
     var allFloorplans = getAllPosts();
+
+
+    
+
+
+    
 
     function configureClickEvent(item, index) {
         var postID = item.getAttribute("id").split('-');
@@ -38,12 +47,26 @@ const suitesGridLightbox = (function () {
 
 
     function getAllPosts() {
-        var post = new wp.api.models.Floorplans();
 
-        return post.fetch({ data: { per_page: 40 } }).done((data) => {
-            console.log(data); 
-                return allFloorplans = data;
-        });
+        wp.api.loadPromise.done( function() {
+
+            var post = new wp.api.models.Floorplans();
+
+            return post.fetch({ data: { per_page: 40 } }).done((data) => {
+                console.log(data); 
+                    return allFloorplans = data;
+            });
+
+
+        } );
+
+
+        // var post = new wp.api.models.Floorplans();
+
+        // return post.fetch({ data: { per_page: 40 } }).done((data) => {
+        //     console.log(data); 
+        //         return allFloorplans = data;
+        // });
     }
 
     function createLightbox(post) {
