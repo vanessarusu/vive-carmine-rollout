@@ -15,8 +15,14 @@ const suitesGridLightbox = (function () {
     
 
     function configureClickEvent(item, index) {
-        var postID = item.getAttribute("id").split('-');
+        // var postID = item.getAttribute("id").split('-');
+        
+        var classes = Array.from(item.classList);
+        var classID = Array.from(classes).filter(word => word.includes("eg-post-id-"));
+        console.log(classID);
+        var postID = classID[0].split('-');
         postID = postID[postID.length-1];
+        console.log(postID);
         setTimeout(function(){
             item.addEventListener("click", function() {
                 console.log(allFloorplans);
